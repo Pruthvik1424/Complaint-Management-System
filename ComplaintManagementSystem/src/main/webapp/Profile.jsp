@@ -5,6 +5,16 @@
 <head>
     <title>Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!--for dropdown--!>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
+
+
 </head>
 <body>
 
@@ -16,23 +26,36 @@
         </a>
         <!-- End of logo -->
         <ul class="nav justify-content-end">
-            <li class="nav-item" >
-                <a class="nav-link active"  aria-current="page" href="index.jsp">Home</a>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="path/to/profile-pic.jpg" alt="Profile Picture" width="30" height="30" class="rounded-circle"> <!-- Replace with actual path to profile pic -->
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
-            </li>
+
+
+                     <div class="dropdown">
+                            <div class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <!--<img src="${pageContext.request.contextPath}/images/profileicon.jpg" alt="Profile" width="30" height="30" class="rounded-circle"> <!-- Add your profile icon path -->
+                                <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="Profile" width="40" height="40" class="rounded-circle"> <!-- Add your profile icon path -->
+
+                                       </div>  </button>
+                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                               <li><a class="dropdown-item" href="ChangePassword.jsp"><strong>Change password</strong></a></li>
+                               <li><a class="dropdown-item" href="viewprofile"><strong>View profile</strong></a></li>
+                               <li><a class="dropdown-item" href="edit-profile?email=${user.email}"><strong>Edit profile</strong></a></li>
+                             </ul>
+                           </div>
+
+
+                              </div>
+                        </li>
+
         </ul>
     </div>
 </nav>
+
+
+
+
 
 <form action="success" method="post">
     <div class="container mt-5 mb-5 d-flex justify-content-center">
@@ -44,8 +67,6 @@
     </div>
 </form>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjGx+e+jjMfdxI+pgmI1wxsbJ9OdPpvhyy+Rx1PhEpaZb9FaCuM7lJaG4" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhG1KpG9EG7gDh3k8so7Y3z7Sk3ZOr53y5fAFH1zY8cfHE++IoP5mZQFVrB7" crossorigin="anonymous"></script>
 
 </body>
 </html>

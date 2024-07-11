@@ -130,8 +130,18 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Override
     public SignUpDto findByEmail(String email) {
+        System.out.println("running findbyEmail method in signupservice impl");
+
+        SignUpDto signUpDto = signUpRepo.findByEmail(email);
+        if(signUpDto!=null){
+            System.out.println("found Signupdto in service"+signUpDto);
+            return signUpDto;
+        }else {
+            System.out.println("not found result in service"+signUpDto);
+        }
         return signUpRepo.findByEmail(email);
     }
+
 
 
 

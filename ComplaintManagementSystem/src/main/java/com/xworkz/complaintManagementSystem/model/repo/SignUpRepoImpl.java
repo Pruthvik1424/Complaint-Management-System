@@ -58,6 +58,8 @@ public class SignUpRepoImpl implements SignUpRepo {
     @Override
     public SignUpDto findByEmail(String email) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+      EntityTransaction entityTransaction =  entityManager.getTransaction();
+      entityTransaction.begin();
         try {
             System.out.println("Querying for email: " + email);
             Query query = entityManager.createQuery("select s from SignUpDto s where s.email = :email");
@@ -65,11 +67,13 @@ public class SignUpRepoImpl implements SignUpRepo {
             List<SignUpDto> resultList = query.getResultList();
             if (resultList.isEmpty()) {
                 System.out.println("No results found for email: " + email);
+                entityTransaction.commit();
                 return null;
             }
             return resultList.get(0);
         } catch (PersistenceException persistenceException) {
             persistenceException.printStackTrace();
+            entityTransaction.rollback();
             return null;
         } finally {
             entityManager.close();

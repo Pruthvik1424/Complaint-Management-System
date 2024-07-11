@@ -2,6 +2,9 @@ package com.xworkz.complaintManagementSystem.controller;
 
 import com.xworkz.complaintManagementSystem.dto.SignUpDto;
 import com.xworkz.complaintManagementSystem.model.service.SignUpService;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +20,17 @@ import java.security.SecureRandom;
 
 @Controller
 @RequestMapping("/")
+@Slf4j
 public class SignUpController {
 
+    private static final Logger log = LoggerFactory.getLogger(SignUpController.class);
     @Autowired
     private SignUpService signUpService;
 
     public SignUpController(){
+
         System.out.println("Running signup controller");
+        log.info("Hi im logger for this signup controller ");
     }
 
     @PostMapping("/signup")

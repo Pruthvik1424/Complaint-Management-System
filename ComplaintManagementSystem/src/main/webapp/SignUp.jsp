@@ -197,28 +197,28 @@
 
                     <label for="fname" class="form-label">First Name:</label>
                     <input type="text" class="form-control" id="fname" placeholder=" Enter your first name" name="fname"
-                           aria-describedby="fnameHelp" onblur="validateForm()" value="${signUpDto.fname}">
+                           aria-describedby="fnameHelp" onblur="validateForm()" value="${view.fname}">
                     <div id="fnameError" style="color:red;"></div>
                 </div>
 
                 <div class="mb-2">
                     <label for="lname" class="form-label">Last Name:</label>
                     <input type="text" class="form-control" id="lname" placeholder="Enter your last name" name="lname"
-                           aria-describedby="lnameHelp" onblur="validateForm()" value="${signUpDto.lname}">
+                           aria-describedby="lnameHelp" onblur="validateForm()" value="${view.lname}">
                     <div id="lnameError" style="color:red;"></div>
                 </div>
 
                 <div class="mb-2">
                     <label for="email" class="form-label">Email Id:</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter your email address"
-                           value="${signUpDto.email}" name="email" aria-describedby="emailHelp" onblur="validateForm()" onchange="emailValidation()">
+                           value="${view.email}" name="email" aria-describedby="emailHelp" onblur="validateForm()" onchange="emailValidation()">
                     <div id="emailError" style="color:red;"></div>
                 </div>
 
                 <div class="mb-2">
                     <label for="mobilenumber" class="form-label">Mobile Number:</label>
                     <input type="tel" class="form-control" id="mobilenumber" placeholder="Enter your Mobile number"
-                           value="${signUpDto.mobilenumber}" name="mobilenumber" onblur="validateForm()" onchange="mobilenumberValidation()" aria-describedby="mobilenumberHelp">
+                           value="${view.mobilenumber}" name="mobilenumber" onblur="validateForm()" onchange="mobilenumberValidation()" aria-describedby="mobilenumberHelp">
                     <div id="mobilenumberError" style="color:red;"></div>
                     <div id="mobilenumberValidationMessage" style="color:red;"></div>
                 </div>
@@ -227,7 +227,7 @@
                     <label for="alternatemobilenumber" class="form-label">Alternate Number:</label>
                     <input type="tel" class="form-control" id="alternatemobilenumber"
                            placeholder="Enter your alternate mobile number" onblur="validateForm()"
-                           value="${signUpDto.alternatemobilenumber}" name="alternatemobilenumber"
+                           value="${view.alternatemobilenumber}" name="alternatemobilenumber"
                            aria-describedby="alternatemobilenumberHelp">
                     <div id="alternatemobilenumberError" style="color:red;"></div>
                 </div>
@@ -235,7 +235,7 @@
                 <div class="mb-2">
                     <label for="address" class="form-label">Address:</label>
                     <textarea class="form-control" id="address" placeholder="Enter your address" onblur="validateForm()"
-                              value="${signUpDto.address}" style="height: 100px" name="address"
+                              value="${view.address}" style="height: 100px" name="address"
                               aria-describedby="addressHelp"></textarea>
                     <div id="addressError" style="color:red;"></div>
                 </div>

@@ -71,7 +71,7 @@
 
 
           <div class="form-group">
-            <center><button type="submit" id="sendButton" class="btn btn-dark"  ${disableButton ? 'disabled' : ''}>Log in</button></center>
+            <center><button type="submit" id="sendButton" class="btn btn-dark"  ${disableButton ? 'disabled' : ''}>Sign in</button></center>
           </div>
 
           <div class="form-group">

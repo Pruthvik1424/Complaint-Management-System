@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.SecureRandom;
 
@@ -18,13 +19,16 @@ public class SignInController {
     @Autowired
     private SignUpService signUpService;
 
+    @Autowired
+    private HttpSession httpSession;
+
     public SignInController(){
         System.out.println("Running signin controller");
     }
 
     @PostMapping("signin")
-    public String onLogin(@RequestParam String email, @RequestParam String password, Model model) {
-        System.out.println("Login method is running");
+    public String onSignin(@RequestParam String email, @RequestParam String password, Model model) {
+        System.out.println("Signin method is running in controller");
 
         System.out.println("Email :" + email);
         System.out.println("Password :" + password);
@@ -32,7 +36,10 @@ public class SignInController {
         SignUpDto signUpDto = this.signUpService.findByEmailAndPassword(email, password);
         if (signUpDto != null) {
             System.out.println("SignIn successful for email: " + email);
-            model.addAttribute("message", signUpDto.getFname() + " Welcome To Complaint Management System");
+            model.addAttribute("message", signUpDto.getFname() + " : Welcome To Complaint Management System");
+
+            httpSession.setAttribute("signedInUserEmail",email);
+
             return "Profile";
         } else {
             signUpService.incrementFailedAttempts(email);

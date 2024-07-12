@@ -1,6 +1,8 @@
 package com.xworkz.complaintManagementSystem.controller;
 
 import com.xworkz.complaintManagementSystem.model.service.ChangePasswordService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class ChangePasswordController {
 
+    private static final Logger log = LoggerFactory.getLogger(ChangePasswordController.class);
     @Autowired
     private ChangePasswordService changePasswordService;
 
     public ChangePasswordController() {
-        System.out.println("Running ChangePasswordController");
+        ChangePasswordController.log.info("Running ChangePasswordController");
     }
 
     @PostMapping("/changepassword")
@@ -23,7 +26,7 @@ public class ChangePasswordController {
                                  @RequestParam("oldpassword") String oldPassword,
                                  @RequestParam("newpassword") String newPassword,
                                  @RequestParam("confirmpassword") String confirmPassword) {
-        System.out.println("Executing changePassword method in ChangePasswordController");
+        log.info("Executing changePassword method in ChangePasswordController");
 
         if (newPassword.equals(confirmPassword)) {
             boolean passwordChanged = changePasswordService.changePassword(email, oldPassword, newPassword,confirmPassword);

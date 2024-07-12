@@ -20,7 +20,7 @@ public class SignUpRepoImpl implements SignUpRepo {
 
         try {
             entityTransaction.begin();
-            entityManager.persist(signUpDto);
+            entityManager.merge(signUpDto);
             entityTransaction.commit();
         } catch (PersistenceException persistenceException) {
             persistenceException.printStackTrace();

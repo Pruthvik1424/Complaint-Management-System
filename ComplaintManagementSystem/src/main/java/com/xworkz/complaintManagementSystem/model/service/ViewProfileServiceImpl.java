@@ -1,11 +1,13 @@
 package com.xworkz.complaintManagementSystem.model.service;
 
+import com.xworkz.complaintManagementSystem.dto.ProfileImageUploadDto;
 import com.xworkz.complaintManagementSystem.dto.SignUpDto;
 import com.xworkz.complaintManagementSystem.model.repo.ViewProfileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Service
 public class ViewProfileServiceImpl implements ViewProfileService {
@@ -53,5 +55,11 @@ public class ViewProfileServiceImpl implements ViewProfileService {
         }
         return null;
     }
+
+    @Override
+    public Optional<ProfileImageUploadDto> getImageDetailsByUserId(int id) {
+        return viewProfileRepo.findByUserId(id);
+    }
+
 
 }

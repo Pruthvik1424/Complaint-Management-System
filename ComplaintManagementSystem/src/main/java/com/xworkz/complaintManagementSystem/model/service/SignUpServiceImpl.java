@@ -34,7 +34,7 @@ public class SignUpServiceImpl implements SignUpService {
         String createdBy = "pruthvi";
         LocalDateTime createdOn = LocalDateTime.now();
         String updatedBy = "NA";
-        LocalDateTime updatedOn = LocalDateTime.now();
+        LocalDateTime updatedOn = null;
         boolean isActive = true;
 
         setAudit(signUpDto, createdBy, createdOn, updatedBy, updatedOn, isActive);

@@ -1,6 +1,9 @@
 package com.xworkz.complaintManagementSystem.model.service;
 
+import com.xworkz.complaintManagementSystem.dto.ProfileImageUploadDto;
 import com.xworkz.complaintManagementSystem.dto.SignUpDto;
+
+import java.util.Optional;
 
 public interface ViewProfileService {
 
@@ -9,5 +12,8 @@ public interface ViewProfileService {
     String getSignInUserEmail();
 
     SignUpDto updateEditedUser(SignUpDto signUpDto);
+
+    Optional<ProfileImageUploadDto> getImageDetailsByUserId(int id);
+
 
 }

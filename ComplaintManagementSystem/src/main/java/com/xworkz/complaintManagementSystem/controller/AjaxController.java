@@ -1,6 +1,8 @@
 package com.xworkz.complaintManagementSystem.controller;
 
 import com.xworkz.complaintManagementSystem.model.service.SignUpService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class AjaxController {
 
+    private static final Logger log = LoggerFactory.getLogger(AjaxController.class);
+
     @Autowired
     private SignUpService
             signUpService;
     public AjaxController(){
-        System.out.println("running rest controller of Ajaxcontroller");
+        AjaxController.log.info("running rest controller of Ajaxcontroller");
     }
 
 

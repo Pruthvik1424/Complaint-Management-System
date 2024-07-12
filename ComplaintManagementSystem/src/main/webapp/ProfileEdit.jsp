@@ -29,8 +29,17 @@
              <div class="dropdown">
               <div class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
-              <!--<img src="${pageContext.request.contextPath}/images/profileicon.jpg" alt="Profile" width="30" height="30" class="rounded-circle"> <!-- Add your profile icon path -->
+        <!--      <!--<img src="${pageContext.request.contextPath}/images/profileicon.jpg" alt="Profile" width="30" height="30" class="rounded-circle"> <!-- Add your profile icon path -->
                <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="Profile" width="40" height="40" class="rounded-circle"> <!-- Add your profile icon path -->
+               <img th:src="${profile.profileImageUrl}" alt="Profile" width="40" height="40" class="rounded-circle">   -->
+                       <c:choose>
+                        <c:when test="${not empty sessionScope.profileImageUrl}">
+                            <img src="${sessionScope.profileImageUrl}" alt="Profile" width="40" height="40" class="rounded-circle">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="Profile" width="40" height="40" class="rounded-circle">
+                        </c:otherwise>
+                    </c:choose>
 
                 </div>  </button>
                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
@@ -43,28 +52,22 @@
     </div>
 </nav>
 
-<form action="edit-profile" method="post">
+<form action="edit-profile" method="post"  enctype="multipart/form-data">
     <input type="hidden" name="email" value="${signupdto.email}">
     <div class="container mt-5 mb-5 d-flex justify-content-center">
         <div class="card px-2 mt-5 mb-5 py-2 bg-body shadow mt-5 mb-6 rounded" style="width:40%; padding:30px;">
             <div class="card-body">
                 <center><h2>EDIT PROFILE</h2></center>
 
-                <!--Image
-                <div>
-                    <div class="mb-4 d-flex justify-content-center">
-                        <img id="selectedImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
-                        alt="example placeholder" style="width: 300px;" />
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div data-mdb-ripple-init class="btn btn-primary btn-rounded">
-                            <label class="form-label text-white m-1" for="customFile1">Choose file</label>
-                            <input type="file" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
-                        </div>
-                    </div>
-                </div>  -->
+                <!-- Image upload -->
+                  <div class="mb-3">
+                      <label for="file" class="form-label">Profile Image:</label>
+                      <input type="file" class="form-control" id="file" name="file">
+                  </div>
 
-                <!--Avatar-->
+                          <img src="${pageContext.request.contextPath}${profileImage}" alt="Profile Image" width="100" height="100" />
+
+                <!--Avatar
                 <div>
                     <div class="d-flex justify-content-center mb-4">
                         <img id="selectedAvatar" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
@@ -76,13 +79,14 @@
                             <input type="file" class="form-control d-none" id="customFile2" onchange="displaySelectedImage(event, 'selectedAvatar')" accept="image/*" />
                         </div>
                     </div>
-                </div>
+                </div>  -->
 
                 <span style="color:red;">
                     <c:forEach items="${errors}" var="objectError">
                         ${objectError.defaultMessage}</br>
                     </c:forEach>
                 </span>
+                 <strong style="color:green;">${msg}</strong><br>
                 <strong style="color:green;">${profileMessage}</strong><br>
                 <strong style="color:red;">${error}</strong><br>
 

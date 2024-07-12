@@ -2,6 +2,9 @@ package com.xworkz.complaintManagementSystem.controller;
 
 import com.xworkz.complaintManagementSystem.dto.SignUpDto;
 import com.xworkz.complaintManagementSystem.model.service.SignUpService;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +17,10 @@ import java.security.SecureRandom;
 
 @Controller
 @RequestMapping("/")
+@Slf4j
 public class SignInController {
 
+    private static final Logger log = LoggerFactory.getLogger(SignInController.class);
     @Autowired
     private SignUpService signUpService;
 
@@ -23,7 +28,7 @@ public class SignInController {
     private HttpSession httpSession;
 
     public SignInController(){
-        System.out.println("Running signin controller");
+        SignInController.log.info("Running signin controller");
     }
 
     @PostMapping("signin")

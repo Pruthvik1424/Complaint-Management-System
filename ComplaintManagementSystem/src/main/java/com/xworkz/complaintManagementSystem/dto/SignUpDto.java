@@ -1,5 +1,7 @@
 package com.xworkz.complaintManagementSystem.dto;
 
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sign_up")
+@SessionAttributes("signUpDto")
 public class SignUpDto {
 
     @Id
@@ -67,11 +70,13 @@ public class SignUpDto {
     @Column(name = "account_locked")
     private boolean accountLocked = true;// Default value
 
-    @Column(name = "new_password")
-    private String newpassword ;
 
     @Transient
     private String agree;
+
+
+    @Column(name = "profile_image")
+    private String profileImage;
 
     public SignUpDto(){
         System.out.println("No param constructor in signUpDto ");
@@ -216,9 +221,17 @@ public class SignUpDto {
                 ", password='" + password + '\'' +
                 ", failedLoginAttempts=" + failedLoginAttempts +
                 ", accountLocked=" + accountLocked +
-                ", newpassword='" + newpassword + '\'' +
                 ", agree='" + agree + '\'' +
+                ", profileImage='" + profileImage + '\'' +
                 '}';
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public String getAgree() {
@@ -229,11 +242,5 @@ public class SignUpDto {
         this.agree = agree;
     }
 
-    public String getNewpassword() {
-        return newpassword;
-    }
 
-    public void setNewpassword(String newpassword) {
-        this.newpassword = newpassword;
-    }
 }

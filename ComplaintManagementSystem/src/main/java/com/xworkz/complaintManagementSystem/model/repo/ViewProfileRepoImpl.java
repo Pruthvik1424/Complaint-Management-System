@@ -1,84 +1,97 @@
 package com.xworkz.complaintManagementSystem.model.repo;
 
+import com.xworkz.complaintManagementSystem.dto.ProfileImageUploadDto;
 import com.xworkz.complaintManagementSystem.dto.SignUpDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
-import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ViewProfileRepoImpl implements ViewProfileRepo {
 
+    private static final Logger log = LoggerFactory.getLogger(ViewProfileRepoImpl.class);
+
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
-    public ViewProfileRepoImpl() {
-        System.out.println("Running ViewProfileRepoImpl...");
-    }
-
     @Override
     public SignUpDto findByUserEmail(String email) {
-        System.out.println("Running findByUserEmail method in ViewProfileRepoImpl...");
-
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        entityTransaction.begin();
-
         try {
-            String query = "SELECT v FROM SignUpDto v WHERE v.email =:email";
+            String query = "SELECT s FROM SignUpDto s WHERE s.email = :email";
             Query q1 = entityManager.createQuery(query);
             q1.setParameter("email", email);
-
-            SignUpDto singleResult = (SignUpDto) q1.getSingleResult();
-            entityTransaction.commit();
-            return singleResult;
-        } catch (NoResultException noResultException) {
-            System.out.println("No user found with email: " + email);
-            entityTransaction.rollback();
-            return null;
-        } catch (PersistenceException persistenceException) {
-            persistenceException.printStackTrace();
-            entityTransaction.rollback();
+            return (SignUpDto) q1.getSingleResult();
+        } catch (Exception e) {
+            log.error("Error finding user by email: " + email, e);
             return null;
         } finally {
             entityManager.close();
         }
     }
 
-
     @Override
+    @Transactional
     public SignUpDto updateEditedUser(SignUpDto signUpDto) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
-            entityTransaction.begin();
+            entityManager.getTransaction().begin();
             SignUpDto existingUser = entityManager.find(SignUpDto.class, signUpDto.getId());
             if (existingUser != null) {
-                System.out.println("Updating user: " + existingUser);
-                // Update the user details
                 existingUser.setFname(signUpDto.getFname());
                 existingUser.setLname(signUpDto.getLname());
                 existingUser.setMobilenumber(signUpDto.getMobilenumber());
                 existingUser.setAlternatemobilenumber(signUpDto.getAlternatemobilenumber());
                 existingUser.setAddress(signUpDto.getAddress());
-
-                // Persist the changes
                 entityManager.merge(existingUser);
-                entityTransaction.commit();
-                System.out.println("User updated: " + existingUser);
+                entityManager.getTransaction().commit();
                 return existingUser;
             } else {
-                System.out.println("No user found to update: " + signUpDto.getEmail());
-                return null; // no user found
+                log.warn("User with id {} not found", signUpDto.getId());
+                return null;
             }
-        } catch (PersistenceException persistenceException) {
-            persistenceException.printStackTrace();
-            entityTransaction.rollback();
+        } catch (Exception e) {
+            log.error("Error updating user", e);
+            entityManager.getTransaction().rollback();
             return null;
         } finally {
             entityManager.close();
         }
     }
+
+    @Override
+    @Transactional
+    public void saveProfileImage(ProfileImageUploadDto profileImageUploadDto) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(profileImageUploadDto);
+            entityManager.getTransaction().commit();
+            log.info("Saved profile image for user: " + profileImageUploadDto );
+        } catch (Exception e) {
+            log.error("Error saving profile image", e);
+            entityManager.getTransaction().rollback();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public Optional<ProfileImageUploadDto> findByUserId(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            TypedQuery<ProfileImageUploadDto> query = entityManager.createQuery(
+                    "SELECT i FROM ProfileImageUploadDto i WHERE i.id = :id", ProfileImageUploadDto.class);
+            query.setParameter("id", id);
+            return query.getResultList().stream().findFirst();
+        } finally {
+            entityManager.close();
+        }
+    }
 }
+

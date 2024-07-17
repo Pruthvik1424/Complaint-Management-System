@@ -2,9 +2,12 @@ package com.xworkz.complaintManagementSystem.model.service;
 
 import com.xworkz.complaintManagementSystem.dto.SignUpDto;
 import com.xworkz.complaintManagementSystem.model.repo.SignUpRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -15,11 +18,15 @@ import java.util.Map;
 @Service
 public class SignUpServiceImpl implements SignUpService {
 
+    private static final Logger log = LoggerFactory.getLogger(SignUpServiceImpl.class);
     @Autowired
     private SignUpRepo signUpRepo;
 
     @Autowired
     private JavaMailSender javaMailSender;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private Map<String, SignUpDto> users = new HashMap<>();
 
@@ -38,6 +45,7 @@ public class SignUpServiceImpl implements SignUpService {
         boolean isActive = true;
 
         setAudit(signUpDto, createdBy, createdOn, updatedBy, updatedOn, isActive);
+        signUpDto.setProfileImage("defdefaultuserimage.png");
 
         boolean saved = signUpRepo.save(signUpDto);
         if (saved) {
@@ -61,8 +69,15 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Override
     public SignUpDto findByEmailAndPassword(String email, String password) {
-        return signUpRepo.findByEmailAndPassword(email, password);
+        SignUpDto signUpDto = signUpRepo.findByEmail(email);
+        if (signUpDto != null && passwordEncoder.matches(password, signUpDto.getPassword())) {
+            System.out.println(signUpDto);
+            return signUpDto;
+        }
+
+        return null; // Or throw an exception if you prefer
     }
+
 
     @Override
     public void sendPasswordEmail(String toEmail, String subject, String body) {
@@ -149,38 +164,6 @@ public class SignUpServiceImpl implements SignUpService {
     public boolean resetPasswordByEmail(SignUpDto signUpDto) {
         System.out.println("Running resetPasswordByEmail method in SignUpServiceImpl");
         return signUpRepo.resetPasswordByEmail(signUpDto);
-
-
-//        SignUpDto user = signUpRepo.findByEmail(email);
-//        if (user == null) {
-//            System.out.println("Email not found in database");
-//            return false;
-//        }
-//
-//        String newPassword = generatePassword();
-//        user.setPassword(newPassword);
-//        boolean isUpdated = signUpRepo.resetPasswordByEmail(user);
-//
-//        if (isUpdated) {
-//            String subject = "New Password";
-//            String body = "Your new password is: " + newPassword;
-//            sendPasswordEmail(email, subject, body);
-//            System.out.println("Password reset successful");
-//        } else {
-//            System.err.println("Failed to update password in database");
-//        }
-
-//        return isUpdated;
-    }
-
-
-    private String generatePassword() {
-        SecureRandom secureRandom = new SecureRandom();
-        StringBuilder sb = new StringBuilder(8);
-        for (int i = 0; i < 8; i++) {
-            sb.append((char) ('A' + secureRandom.nextInt(26)));
-        }
-        return sb.toString();
     }
 
 }

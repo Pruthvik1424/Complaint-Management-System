@@ -19,7 +19,10 @@
       <ul class="nav justify-content-end">
       <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+                <a class="nav-link active" aria-current="page" href="Profile.jsp">Profile</a>
               </li>
+                          <img src="${pageContext.request.contextPath}${sessionScope.profileImage}" alt="Profile" width="80" height="80" class="rounded-circle"/>
+
 
              </ul>
            </div>

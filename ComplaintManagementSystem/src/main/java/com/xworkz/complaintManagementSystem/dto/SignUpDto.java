@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sign_up")
-@SessionAttributes("signUpDto")
+
 public class SignUpDto {
 
     @Id
@@ -80,6 +80,26 @@ public class SignUpDto {
 
     public SignUpDto(){
         System.out.println("No param constructor in signUpDto ");
+    }
+
+    public SignUpDto(int id, String fname, String lname, String email, Long mobilenumber, Long alternatemobilenumber, String address, String createdBy, LocalDateTime createdOn, String updatedBy, LocalDateTime updatedOn, boolean isActive, String password, int failedLoginAttempts, boolean accountLocked, String agree, String profileImage) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.mobilenumber = mobilenumber;
+        this.alternatemobilenumber = alternatemobilenumber;
+        this.address = address;
+        this.createdBy = createdBy;
+        this.createdOn = createdOn;
+        this.updatedBy = updatedBy;
+        this.updatedOn = updatedOn;
+        this.isActive = isActive;
+        this.password = password;
+        this.failedLoginAttempts = failedLoginAttempts;
+        this.accountLocked = accountLocked;
+        this.agree = agree;
+        this.profileImage = profileImage;
     }
 
     public int getId() {

@@ -42,9 +42,7 @@ public class ChangePasswordRepoImpl implements ChangePasswordRepo {
             Query query = entityManager.createQuery("UPDATE SignUpDto s SET s.password = :password WHERE s.email = :email");
             query.setParameter("password", newPassword);
             query.setParameter("email", email);
-            int updatedRows = query.executeUpdate(
-
-            );
+            int updatedRows = query.executeUpdate();
             tx.commit();
             updateStatus = updatedRows > 0;
         } catch (PersistenceException e) {

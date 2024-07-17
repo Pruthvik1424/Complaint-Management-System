@@ -24,28 +24,16 @@
         </a>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+              <a class="nav-link active" aria-current="page" href="Profile.jsp">Profile</a>
             </li>
              <div class="dropdown">
               <div class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-
-        <!--      <!--<img src="${pageContext.request.contextPath}/images/profileicon.jpg" alt="Profile" width="30" height="30" class="rounded-circle"> <!-- Add your profile icon path -->
-               <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="Profile" width="40" height="40" class="rounded-circle"> <!-- Add your profile icon path -->
-               <img th:src="${profile.profileImageUrl}" alt="Profile" width="40" height="40" class="rounded-circle">   -->
-                       <c:choose>
-                        <c:when test="${not empty sessionScope.profileImageUrl}">
-                            <img src="${sessionScope.profileImageUrl}" alt="Profile" width="40" height="40" class="rounded-circle">
-                        </c:when>
-                        <c:otherwise>
-                            <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="Profile" width="40" height="40" class="rounded-circle">
-                        </c:otherwise>
-                    </c:choose>
-
+             <img src="${pageContext.request.contextPath}${sessionScope.profileImage}" alt="Profile" width="80" height="80" class="rounded-circle"/>
                 </div>  </button>
                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="ChangePassword.jsp"><strong>Change password</strong></a></li>
                <li><a class="dropdown-item" href="viewprofile"><strong>View profile</strong></a></li>
-               <li><a class="dropdown-item" href="edit-profile?email=${user.email}"><strong>Edit profile</strong></a></li>
+               <li><a class="dropdown-item" href="edit-profile?email=${email}"><strong>Edit profile</strong></a></li>
                 </ul>
                 </div>
         </ul>
@@ -62,10 +50,9 @@
                 <!-- Image upload -->
                   <div class="mb-3">
                       <label for="file" class="form-label">Profile Image:</label>
-                      <input type="file" class="form-control" id="file" name="file">
+                      <input type="file" class="form-control" id="file" name="multipartFile">
                   </div>
 
-                          <img src="${pageContext.request.contextPath}${profileImage}" alt="Profile Image" width="100" height="100" />
 
                 <!--Avatar
                 <div>
@@ -88,36 +75,42 @@
                 </span>
                  <strong style="color:green;">${msg}</strong><br>
                 <strong style="color:green;">${profileMessage}</strong><br>
+                <strong style="color:red;">${msg1}</strong><br>
+                <strong style="color:red;">${msg1}</strong><br>
                 <strong style="color:red;">${error}</strong><br>
 
                 <div class="mb-3">
                     <label for="fname" class="form-label">First Name:</label>
-                    <input type="text" class="form-control" id="fname" name="fname" value="${signupdto.fname}">
+                    <input type="text" class="form-control" id="fname" name="fname" value="${signUpDto.fname}">
                 </div>
 
                 <div class="mb-2">
                     <label for="lname" class="form-label">Last Name:</label>
-                    <input type="text" class="form-control" id="lname" name="lname" value="${signupdto.lname}">
+                    <input type="text" class="form-control" id="lname" name="lname" value="${signUpDto.lname}">
                 </div>
 
                 <div class="mb-2">
-                    <label for="email" class="form-label">Email Id:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="${signupdto.email}" disabled readonly>
-                </div>
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email" value="${signUpDto.email}" readonly disabled>
+                                </div>
+
+
+
+                          <!--      ${signUpDto.email}  -->
 
                 <div class="mb-2">
                     <label for="mobilenumber" class="form-label">Mobile Number:</label>
-                    <input type="tel" class="form-control" id="mobilenumber" name="mobilenumber" value="${signupdto.mobilenumber}">
+                    <input type="tel" class="form-control" id="mobilenumber" name="mobilenumber" value="${signUpDto.mobilenumber}">
                 </div>
 
                 <div class="mb-2">
                     <label for="alternatemobilenumber" class="form-label">Alternate Number:</label>
-                    <input type="tel" class="form-control" id="alternatemobilenumber" name="alternatemobilenumber" value="${signupdto.alternatemobilenumber}">
+                    <input type="tel" class="form-control" id="alternatemobilenumber" name="alternatemobilenumber" value="${signUpDto.alternatemobilenumber}">
                 </div>
 
                 <div class="mb-2">
                     <label for="address" class="form-label">Address:</label>
-                    <textarea class="form-control" id="address" name="address" style="height: 100px">${signupdto.address}</textarea>
+                    <textarea class="form-control" id="address" name="address" style="height: 100px">${signUpDto.address}</textarea>
                 </div>
 
                 <div class="form-group">

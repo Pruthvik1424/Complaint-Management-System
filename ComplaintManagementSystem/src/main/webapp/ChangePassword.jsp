@@ -21,12 +21,12 @@
           <ul class="nav justify-content-end">
               <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+                  <a class="nav-link active" aria-current="page" href="Profile.jsp">Profile</a>
               </li>
                <div class="dropdown">
                 <div class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
-                <!--<img src="${pageContext.request.contextPath}/images/profileicon.jpg" alt="Profile" width="30" height="30" class="rounded-circle"> <!-- Add your profile icon path -->
-                 <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="Profile" width="40" height="40" class="rounded-circle"> <!-- Add your profile icon path -->
+                    <img src="${pageContext.request.contextPath}${sessionScope.profileImage}" alt="Profile" width="80" height="80" class="rounded-circle"/>
 
                   </div>  </button>
                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">

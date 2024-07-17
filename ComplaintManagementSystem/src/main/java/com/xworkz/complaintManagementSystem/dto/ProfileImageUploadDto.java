@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Slf4j
 @Entity
 
+
 @Table(name = "image_upload")
 public class ProfileImageUploadDto {
 

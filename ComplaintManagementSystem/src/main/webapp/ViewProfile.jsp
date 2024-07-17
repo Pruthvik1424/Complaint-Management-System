@@ -8,27 +8,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" alt="xworkz" width="140" height="70">
-                </a>
-                <a class="navbar-brand text-white" href="index.jsp"><b>Home</b></a>
-                <a class="navbar-brand text-white" href="SignIn.jsp"><b>SignIn</b></a>
-            </div>
-        </div>
-    </nav>
+
+<header>
+<nav class="navbar navbar-dark shadow p-3 mb-5 rounded bg-dark">
+    <div class="container-fluid">
+        <!-- Add your logo here -->
+        <a class="navbar-brand" href="#">
+            <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" alt="xworkz" width="140" height="70">
+        </a>
+        <!-- End of logo -->
+        <span style="color: white; font-style: italic;">ComplaintManagementSystem</span>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="Profile.jsp">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.jsp">Index</a>
+            </li>
+            <li>
+            <img src="${pageContext.request.contextPath}${sessionScope.profileImage}" alt="Profile" width="80" height="80" class="rounded-circle"/>
+            </li>
+
+        </ul>
+    </div>
+
+</nav>
+</header>
 
     <div class="container mt-5">
         <h2>User Profile</h2>
         <div class="card">
             <div class="card-body">
                 <strong class="card-title">Name: ${signUpDto.fname} ${signUpDto.lname}</strong><br><br>
-                <p class="card-text"><strong>Email: ${signUpDto.email}</strong></p>
-                <p class="card-text">Contact Number: ${signUpDto.mobilenumber}</p>
-                <p class="card-text">Alternative Contact Number: ${signUpDto.alternatemobilenumber}</p>
-                <p class="card-text">Address: ${signUpDto.address}</p>
+
             </div>
         </div>
     </div>

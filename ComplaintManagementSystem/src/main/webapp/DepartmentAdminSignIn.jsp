@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signin</title>
+    <title>Profile</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -14,16 +14,6 @@
             background: linear-gradient(90deg,#212529, #000); /* Example gradient */
         }
 </style>
-
-    <script>
-    function checkFailedAttempts() {
-        const failedAttempts = ${failedAttempts};
-        const disableButton = ${disableButton};
-        if (failedAttempts >= 3 || disableButton) {
-            document.getElementById("submit").disabled = true;
-     }
-    }
-    </script>
 
 
 
@@ -41,25 +31,23 @@
 
                 <ul class="nav justify-content-end">
                              <li class="nav-item">
-                                <a class="nav-link " style="color : white" aria-current="page" href="index.jsp">Home</a>
+                                <a class="nav-link " style="color : white " aria-current="page" href="index.jsp">Home</a>
                               </li>
-                            <li class="nav-item">
-                                <a class="nav-link " style="color:white" aria-current="page" href="SignUp.jsp">Sign Up</a>
-                            </li>
                         </ul>
         </ul>
     </div>
 </nav>
 </header>
 
-      <form action="signin" method="post">
+      <form action="departmentadminsignin" method="post">
            <div class="container mt-5 mb-5 d-flex justify-content-center  ">
                  <div class="card px-2 mt-5 mb-5 py-2 bg-body shadow mt-5 mb-6 rounded" style="width:40%; padding:30px;">
                      <div class="card-body ">
 
 
                           <br>
-                          <center><h2>SIGN IN</h2></center>
+                          <center><h2>DEPARTMENT ADMIN SIGNIN</h2></center>
+
 
             <center>  <span style="color:red">${error}</span> </center>
             <div class="mb-2">
@@ -94,10 +82,6 @@
                                              class="fw-bold text-body"><u>Reset password here</u></a></p>
                     </div>
 
-          <div class="form-group">
-          <p class="text-center text-muted mt-1 mb-0">Do not have an account? <a href="SignUp.jsp"
-                                   class="fw-bold text-body"><u>Signup here</u></a></p>
-          </div>
          </div>
         </div>
       </form>

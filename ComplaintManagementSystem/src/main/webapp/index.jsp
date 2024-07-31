@@ -1,37 +1,65 @@
-<%@ page isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored ="false"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Complaint Management System</title>
-<!-- <title>Bootstrap 5 Modal Example</title> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+        .navbar-custom {
+            background: linear-gradient(90deg,#212529, #000); /* Example gradient */
+        }
+</style>
+
 </head>
 <body>
 
+
 <header>
-
-<nav class="navbar navbar-dark shadow p-3 mb-5 rounded bg-dark">
+<nav class="navbar navbar-custom shadow p-3 ">
     <div class="container-fluid">
-        <!-- Add your logo here -->
-        <a class="navbar-brand" href="#">
-            <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" alt="xworkz" width="140" height="70">
+        <a class="navbar-brand " href="#">
+            <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" style="bg-color:dark" alt="xworkz" width="140" height="70">
         </a>
-        <!-- End of logo -->
-        <span style="color: white; font-style: italic;">ComplaintManagementSystem</span>
         <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="SignUp.jsp">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="SignIn.jsp">Sign In</a>
-            </li>
+                      <li>
+                         <div class="dropdown">
+                            <div class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <lable style="color:white"><strong>User</strong></lable>
+                            </div>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="SignUp.jsp"><strong>SignUp</strong></a></li>
+                                <li><a class="dropdown-item" href="SignIn.jsp"><strong>SignIn</strong></a></li>
 
+                            </ul>
+                         </div>
+
+                      </li>
+
+                      <li>
+                         <div class="dropdown">
+                            <div class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <lable style="color:white"><strong>Admin</strong></lable>
+                            </div>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="AdminPage.jsp"><strong>Admin SignIn</strong></a></li>
+                                <li><a class="dropdown-item" href="DepartmentAdminSignIn.jsp"><strong>Department Admin SignIn</strong></a></li>
+
+                            </ul>
+                         </div>
+                      </li>
+
+            </div>
         </ul>
     </div>
-
 </nav>
+
+
+
 </header>
 
 

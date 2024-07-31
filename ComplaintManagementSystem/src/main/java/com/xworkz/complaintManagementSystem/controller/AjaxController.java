@@ -1,9 +1,12 @@
 package com.xworkz.complaintManagementSystem.controller;
 
+import com.xworkz.complaintManagementSystem.dto.ComplaintDto;
 import com.xworkz.complaintManagementSystem.model.service.SignUpService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,22 +16,12 @@ public class AjaxController {
     private static final Logger log = LoggerFactory.getLogger(AjaxController.class);
 
     @Autowired
-    private SignUpService
-            signUpService;
+    private SignUpService signUpService;
+
+
     public AjaxController(){
         AjaxController.log.info("running rest controller of Ajaxcontroller");
     }
-
-
-//    @GetMapping("/validateEmail/{email}")
-//    public String emailValidation(@PathVariable String email){
-//        System.out.println("email :"+email);
-//        if(signUpService.existByEmail(email)){
-//            return "<span style='color : red '>Email Already Exist</span>";
-//        }else {
-//            return null;
-//        }
-//    }
 
     @GetMapping("/validateEmail/{email}")
     public String emailValidation(@PathVariable String email) {
@@ -50,6 +43,7 @@ public class AjaxController {
             return "<span style= 'color : green'>This contact is available </span>";
         }
     }
+
 
 
 

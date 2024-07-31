@@ -3,10 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sign Up</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Profile</title>
 
-    <script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+        .navbar-custom {
+            background: linear-gradient(90deg,#212529, #000); /* Example gradient */
+        }
+</style>
+
+ <script>
         let isEmailValid = false;
         let isMobileNumberValid = false;
 
@@ -161,22 +170,26 @@
 </head>
 <body>
 
-<nav class="navbar navbar-dark shadow p-3 mb-5 bg-dark rounded">
-    <!-- Navbar content -->
+<header>
+<nav class="navbar navbar-custom shadow p-3 ">
     <div class="container-fluid">
-        <!-- Add your logo here -->
-        <a class="navbar-brand" href="#">
-            <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" alt="xworkz" width="140" height="70">
+        <a class="navbar-brand " href="#">
+            <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" style="bg-color:dark" alt="xworkz" width="140" height="70">
         </a>
-        <!-- End of logo -->
         <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
-            </li>
+
+                <ul class="nav justify-content-end">
+                             <li class="nav-item">
+                                <a class="nav-link " style="color : white" aria-current="page" href="index.jsp">Home</a>
+                              </li>
+                            <li class="nav-item">
+                                <a class="nav-link " style="color : white" aria-current="page" href="SignIn.jsp">Sign In</a>
+                            </li>
+                        </ul>
         </ul>
     </div>
 </nav>
-
+</header>
 <form action="signup" method="post" >
     <div class="container mt-5 mb-5 d-flex justify-content-center">
         <div class="card px-2 mt-5 mb-5 py-2 bg-body shadow mt-5 mb-6 rounded" style="width:40%; padding:30px;">

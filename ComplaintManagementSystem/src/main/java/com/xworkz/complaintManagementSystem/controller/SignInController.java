@@ -76,7 +76,7 @@ public class SignInController {
                 model.addAttribute("disableButton", false);
             }
             model.addAttribute("failedAttempts", failedAttempts);
-            return "SignIn";
+            return "Profile";
         }
     }
 

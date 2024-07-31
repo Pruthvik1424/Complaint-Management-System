@@ -57,10 +57,10 @@ public class SignUpController {
         if (saved) {
             System.out.println("Signup service is saved successfully" + signUpDto);
             System.out.println("Generated Password: " + generatedPassword);
+
             // Send email with the generated password
             String subject = "Welcome to our complaint management system";
             String body = "Hi" + signUpDto.getFname() + ",\n\n your regeisteraation is successful. your password is " + generatedPassword;
-
             signUpService.sendPasswordEmail(email, subject, body);
 
             model.addAttribute("msg", "Signup successfull. please chech your email for your password");

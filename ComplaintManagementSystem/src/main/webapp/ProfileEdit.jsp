@@ -95,7 +95,6 @@
                                 </div>
 
 
-
                           <!--      ${signUpDto.email}  -->
 
                 <div class="mb-2">

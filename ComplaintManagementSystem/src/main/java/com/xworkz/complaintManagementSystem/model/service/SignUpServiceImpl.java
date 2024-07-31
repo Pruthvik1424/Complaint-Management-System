@@ -79,6 +79,7 @@ public class SignUpServiceImpl implements SignUpService {
     }
 
 
+
     @Override
     public void sendPasswordEmail(String toEmail, String subject, String body) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();

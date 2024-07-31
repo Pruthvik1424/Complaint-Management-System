@@ -142,7 +142,7 @@ public class EditProfileController {
 
                 session.setAttribute("fname", updatedUserData.getFname());
                 session.setAttribute("lname", updatedUserData.getLname());
-                //session.setAttribute("email", updatedUserData.getEmail());
+                session.setAttribute("email", updatedUserData.getEmail());
                 session.setAttribute("mobilenumber", updatedUserData.getMobilenumber());
                 session.setAttribute("alternatemobilenumber", updatedUserData.getAlternatemobilenumber());
                 session.setAttribute("address", updatedUserData.getAddress());

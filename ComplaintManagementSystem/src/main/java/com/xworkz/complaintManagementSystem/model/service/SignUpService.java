@@ -30,8 +30,6 @@ public interface SignUpService {
 
     SignUpDto findByEmail(String email);
 
-
-
     boolean resetPasswordByEmail(SignUpDto signUpDto);
 
 
